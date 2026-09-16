@@ -1,0 +1,192 @@
+/* Amy Salanty, site styles. Loaded after the MegaOne mental-health demo style.css.
+   Prefix: as-  */
+
+:root{
+  --as-ink:#14272C;        /* 15.48 on white, 13.75 on sand */
+  --as-muted:#4A5B60;      /*  7.10 on white,  6.31 on sand */
+  --as-acc:#0F8193;        /*  4.58 on white; rules, icons and 24px+ type only */
+  --as-acc-ink:#0A6572;    /*  6.74 on white,  5.98 on sand; small text on light */
+  --as-acc-lift:#7FD3DE;   /*  9.05 on ink,    7.11 on deep; small text on dark */
+  --as-deep:#0E3B43;       /*  white on it 12.17 */
+  --as-soft:#C5D6D9;       /*  8.11 on deep; body text on dark */
+  --as-sand:#F5F1EA;
+  --as-line:#DCE3E4;
+  --as-serif:'Raleway',sans-serif;
+  --as-sans:'Open Sans',sans-serif;
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--as-sans);color:var(--as-ink);background:#fff;font-size:17px;line-height:1.7}
+h1,h2,h3{font-family:var(--as-serif);color:var(--as-ink);letter-spacing:-.01em}
+h2{font-size:clamp(30px,3.4vw,42px);font-weight:600;line-height:1.2;margin-bottom:18px}
+h3{font-size:20px;font-weight:700;margin-bottom:6px}
+p{color:var(--as-muted)}
+a{color:var(--as-acc-ink)}
+a:hover{color:var(--as-ink)}
+img{max-width:100%;height:auto;display:block}
+section{padding:96px 0}
+@media (max-width:767px){section{padding:64px 0}}
+
+.as-skip{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--as-ink);color:#fff;padding:10px 16px}
+.as-skip:focus{left:12px;top:12px;color:#fff}
+
+.as-kicker{font-family:var(--as-sans);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--as-acc-ink);margin-bottom:10px}
+.as-kicker::before{content:"";display:inline-block;width:28px;height:2px;background:var(--as-acc);vertical-align:middle;margin-right:10px}
+.as-kicker-lift{color:var(--as-acc-lift)}
+.as-kicker-lift::before{background:var(--as-acc-lift)}
+.as-head{max-width:720px;margin:0 auto 48px;text-align:center}
+.as-head .as-kicker::before{display:none}
+.as-sub{font-size:18px}
+
+/* Loader from demo: demo colours replaced */
+.loader{background:#fff}
+.loader-spinner{border-top-color:var(--as-acc)!important}
+
+/* Buttons. The demo .btn is position:absolute; these are separate classes. */
+.as-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.as-btn{display:inline-block;font-family:var(--as-serif);font-weight:700;font-size:15px;letter-spacing:.03em;padding:13px 30px;border-radius:40px;border:2px solid transparent;transition:background .3s,color .3s,border-color .3s;text-decoration:none;cursor:pointer}
+.as-btn-solid{background:var(--as-acc-ink);color:#fff;border-color:var(--as-acc-ink)}
+.as-btn-solid:hover,.as-btn-solid:focus{background:var(--as-ink);border-color:var(--as-ink);color:#fff}
+.as-btn-line{background:#fff;color:var(--as-ink);border-color:var(--as-ink)}
+.as-btn-line:hover,.as-btn-line:focus{background:var(--as-ink);color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--as-acc);outline-offset:2px}
+
+/* NAV: demo bottom-nav / navbar classes not used; own fixed nav at the top */
+.as-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--as-line);transition:box-shadow .3s}
+.as-nav.as-scrolled{box-shadow:0 6px 24px rgba(20,39,44,.08)}
+.as-nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.as-brand{font-family:var(--as-serif);font-weight:700;font-size:21px;color:var(--as-ink);text-decoration:none;line-height:1.1}
+.as-brand span{display:block;font-family:var(--as-sans);font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--as-acc-ink);margin-top:3px}
+.as-brand:hover{color:var(--as-ink)}
+.as-links{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
+.as-links a{font-family:var(--as-serif);font-weight:600;font-size:15px;color:var(--as-ink);text-decoration:none;padding:6px 0;border-bottom:2px solid transparent}
+.as-links a:hover,.as-links a.as-active{border-bottom-color:var(--as-acc)}
+.as-links a.as-links-cta{background:var(--as-acc-ink);color:#fff;padding:9px 22px;border-radius:30px;border:0}
+.as-links a.as-links-cta:hover{background:var(--as-ink);color:#fff}
+.as-burger{display:none;background:none;border:0;width:44px;height:44px;padding:10px;cursor:pointer}
+.as-burger span{display:block;height:2px;background:var(--as-ink);margin:5px 0}
+@media (max-width:991px){.as-links{display:none}.as-burger{display:block}}
+
+.as-menu{position:fixed;inset:0 0 0 auto;width:min(340px,86vw);background:var(--as-deep);z-index:1100;transform:translateX(100%);transition:transform .35s ease;padding:90px 36px 36px;visibility:hidden}
+.as-menu.as-open{transform:none;visibility:visible}
+.as-menu ul{list-style:none;padding:0;margin:0}
+.as-menu li a{display:block;color:#fff;font-family:var(--as-serif);font-size:24px;font-weight:600;padding:10px 0;text-decoration:none}
+.as-menu li a:hover{color:var(--as-acc-lift)}
+.as-menu-close{position:absolute;top:18px;right:22px;background:none;border:0;color:#fff;font-size:40px;line-height:1;cursor:pointer;width:48px;height:48px}
+.as-menu-foot{color:var(--as-soft);margin-top:30px;font-size:15px}
+
+/* HERO. Demo .banner is display:flex via center rules; force block so it spans full width. */
+.banner.as-hero{display:block!important;position:relative;min-height:100vh;padding:0;background:#EDEDE8 url('../img/hero.jpg') 72% center/cover no-repeat}
+.as-hero .container{position:relative;z-index:2;min-height:100vh;display:flex;align-items:center;padding-top:74px}
+.as-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.86) 38%,rgba(255,255,255,0) 62%);z-index:1}
+.as-hero-copy{max-width:540px}
+.as-eyebrow{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--as-acc-ink);margin-bottom:14px}
+.as-hero h1{font-size:clamp(46px,6.2vw,80px);font-weight:700;line-height:1.02;margin-bottom:8px;color:var(--as-ink)}
+.as-hero-cred{font-family:var(--as-serif);font-size:22px;font-weight:600;color:var(--as-ink);margin-bottom:22px}
+.as-hero-lede{font-size:20px;color:var(--as-ink);max-width:470px}
+@media (max-width:767px){
+  .banner.as-hero{background-position:78% center;min-height:auto}
+  .as-hero .container{min-height:88vh;align-items:flex-end;padding-bottom:40px}
+  .as-hero-shade{background:linear-gradient(0deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.93) 52%,rgba(255,255,255,.15) 80%)}
+}
+
+/* ABOUT */
+.as-about{background:var(--as-sand)}
+.as-portrait{margin:0 0 36px;position:relative}
+.as-portrait img{border-radius:220px 220px 16px 16px;box-shadow:0 24px 50px rgba(20,39,44,.16)}
+.as-portrait::after{content:"";position:absolute;left:-14px;bottom:-14px;width:120px;height:120px;border-left:3px solid var(--as-acc);border-bottom:3px solid var(--as-acc);border-radius:0 0 0 16px}
+@media (min-width:992px){.as-about .col-lg-7{padding-left:48px}.as-portrait{margin:0}}
+.as-facts{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.as-facts li{background:#fff;border-top:3px solid var(--as-acc);padding:16px 16px 14px;border-radius:0 0 10px 10px}
+.as-facts b{display:block;font-family:var(--as-serif);font-size:19px;color:var(--as-ink)}
+.as-facts span{display:block;font-size:14px;color:var(--as-muted);line-height:1.45}
+@media (max-width:575px){.as-facts{grid-template-columns:1fr}}
+
+/* CAREER */
+.as-career-img img{border-radius:16px;position:sticky;top:100px}
+.as-timeline{list-style:none;margin:0;padding:0 0 0 28px;border-left:2px solid var(--as-line)}
+.as-timeline li{position:relative;padding:0 0 30px 10px}
+.as-timeline li::before{content:"";position:absolute;left:-39px;top:6px;width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--as-acc)}
+.as-yr{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--as-acc-ink);margin-bottom:4px}
+.as-org{font-weight:600;color:var(--as-ink);margin-bottom:4px}
+.as-timeline p{margin-bottom:4px}
+
+/* FOCUS */
+.as-focus{background:var(--as-sand)}
+.as-card{background:#fff;border-radius:16px;overflow:hidden;height:calc(100% - 28px);margin-bottom:28px;box-shadow:0 10px 30px rgba(20,39,44,.07)}
+.as-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.as-card-body{padding:22px 22px 18px}
+.as-card-body p{font-size:15.5px;margin:0}
+
+/* LOOKING AHEAD */
+.as-ahead{background:var(--as-deep) url('../img/plate-6.jpg') center/cover no-repeat;position:relative}
+.as-ahead::before{content:"";position:absolute;inset:0;background:rgba(14,59,67,.9)}
+.as-ahead .container{position:relative}
+.as-ahead-box{max-width:760px}
+.as-ahead h2{color:#fff}
+.as-ahead p{color:var(--as-soft);font-size:19px}
+
+/* CREDENTIALS */
+.as-list{list-style:none;padding:0;margin:0 0 36px}
+.as-list li{padding:14px 0;border-bottom:1px solid var(--as-line)}
+.as-list b{display:block;color:var(--as-ink);font-weight:600}
+.as-list span{display:block;color:var(--as-muted);font-size:15.5px}
+
+/* GALLERY */
+.as-gallery{background:#fff}
+.as-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;gap:16px}
+.as-g{margin:0;overflow:hidden;border-radius:14px}
+.as-g img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.as-g:hover img{transform:scale(1.04)}
+.as-g-tall{grid-row:span 2}
+@media (max-width:767px){.as-grid{grid-template-columns:1fr 1fr;grid-auto-rows:160px}.as-g-tall{grid-row:span 2}}
+.as-disclosure{max-width:760px;margin:26px auto 0;text-align:center;font-size:15px;color:var(--as-muted)}
+
+/* LIFE */
+.as-life{background:var(--as-sand);padding:80px 0}
+.as-life-box{max-width:760px;margin:0 auto;text-align:center}
+.as-life-box .as-kicker::before{display:none}
+
+/* CONTACT */
+.as-contact{background:var(--as-ink)}
+.as-contact h2{color:#fff}
+.as-contact p{color:var(--as-soft)}
+.as-contact-list{list-style:none;padding:0;margin:22px 0}
+.as-contact-list li{display:flex;align-items:center;gap:12px;color:#fff;margin-bottom:12px}
+.as-contact-list i{color:var(--as-acc-lift);width:20px;text-align:center}
+.as-contact-list a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.as-contact-list a:hover{color:var(--as-acc-lift)}
+.as-contact .as-note{font-size:15px;border-left:3px solid var(--as-acc-lift);padding-left:14px}
+.as-form{background:#fff;border-radius:18px;padding:34px}
+.as-form label{display:block;font-weight:600;font-size:14px;color:var(--as-ink);margin:0 0 6px}
+.as-form input,.as-form textarea{width:100%;border:1px solid #8A9A9E;border-radius:8px;padding:12px 14px;margin-bottom:18px;font:inherit;color:var(--as-ink);background:#fff}
+.as-form input:focus,.as-form textarea:focus{border-color:var(--as-acc-ink)}
+.as-form .as-hp{display:none}
+.as-form-note{font-size:14px;color:var(--as-muted)}
+.as-contact .as-form p.as-form-note{color:var(--as-muted)}
+@media (max-width:991px){.as-form{margin-top:28px;padding:24px}}
+
+/* FOOTER */
+.as-foot{background:#0B1C20;padding:30px 0}
+.as-foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.as-foot p{color:var(--as-soft);font-size:14px;margin:0}
+.as-foot b{color:#fff}
+
+.as-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;background:var(--as-acc-ink);color:#fff;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s;z-index:900}
+.as-top.as-show{opacity:1;visibility:visible}
+.as-top:hover{background:var(--as-ink);color:#fff}
+
+/* 404 */
+.as-404{min-height:100vh;display:flex;align-items:center}
+.as-404 h1{font-size:clamp(60px,10vw,120px);margin:0}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Demo style.css sets a:focus,button:focus{color:inherit}, which pulls body ink onto
+   dark and teal grounds. Pin every focus colour explicitly. */
+.as-menu,.as-menu li{color:#fff}
+.as-menu-close,.as-menu-close:focus,.as-menu li a:focus{color:#fff}
+.as-links a.as-links-cta:focus,.as-btn-solid:focus,.as-top:focus{color:#fff}
+.as-links a:focus,.as-brand:focus,.as-btn-line:focus{color:var(--as-ink)}
+.as-btn-line:focus{color:#fff}
+.as-contact-list a:focus{color:#fff}
